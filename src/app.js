@@ -1,3 +1,16 @@
+const params = {
+  oem: Tesseract.OEM.DEFAULT,
+  psm: Tesseract.PSM.SPARSE_TEXT,
+  langs: 'jpn+eng',
+  whitelist: '',
+}
+for (const [key, value] of new URLSearchParams(location.search).entries()) {
+  params[key] = value
+}
+for (const key of ['oem', 'psm', 'langs', 'whitelist']) {
+  document.querySelector(`[name=${key}]`).value = params[key]
+}
+
 const progressElement = document.getElementsByTagName('progress')[0]
 const logger = log => {
   if (log.status === 'recognizing text') {
@@ -8,13 +21,15 @@ const logger = log => {
 }
 
 // https://github.com/naptha/tesseract.js/blob/master/docs/api.md
-const createTesseractWorker = async langs => {
+const createTesseractWorker = async () => {
   const tesseractWorker = Tesseract.createWorker({ logger })
   await tesseractWorker.load()
-  await tesseractWorker.loadLanguage(langs)
-  await tesseractWorker.initialize(langs)
+  await tesseractWorker.loadLanguage(params.langs)
+  await tesseractWorker.initialize(params.langs)
   await tesseractWorker.setParameters({
-    tessedit_pageseg_mode: Tesseract.PSM.SPARSE_TEXT,
+    tessedit_ocr_engine_mode: params.oem,
+    tessedit_pageseg_mode: params.psm,
+    tessedit_char_whitelist: params.whitelist,
     tessjs_create_hocr: '0',
     tessjs_create_tsv: '0',
   })
@@ -37,7 +52,7 @@ const playVideo = async videoElement => {
 (async () => {
   const videoElement = document.getElementsByTagName('video')[0]
   const [tesseractWorker] = await Promise.all([
-    createTesseractWorker('jpn+eng'),
+    createTesseractWorker(),
     playVideo(videoElement),
   ])
 
