@@ -24,6 +24,7 @@ const createTesseractWorker = async langs => {
 const playVideo = async videoElement => {
   const videoStream = await navigator.mediaDevices.getUserMedia({
     video: {
+      facingMode: 'environment',
       width: videoElement.width,
       height: videoElement.height,
     },
