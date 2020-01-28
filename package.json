@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "start": "parcel       src/index.html --out-dir docs --no-cache --https",
-    "build": "parcel build src/index.html --out-dir docs --no-cache --public-url ."
+    "build": "parcel build src/index.html --out-dir docs --no-cache --public-url . --no-source-maps"
   },
   "devDependencies": {
     "parcel": "^1.12.4",
