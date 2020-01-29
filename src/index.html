@@ -1,7 +1,7 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=640,initial-scale=1" />
+    <meta name="viewport" content="width=640" />
     <title>Tes Sera Sera - A tesseract.js camera example</title>
     <style>
       *,::before,::after {
@@ -25,10 +25,19 @@
         flex: 0 1 auto;
         resize: none;
       }
-      progress {
+      .status {
         position: absolute;
-        right: 8px;
+        right: 0;
         bottom: 0;
+        width: 320px;
+        padding: 0 8px;
+      }
+      .status-text {
+        text-shadow: 1px 0 0 white, -1px 0 0 white, 0 1px 0 white, 0 -1px 0 white;
+        text-transform: capitalize;
+      }
+      progress {
+        width: 100%;
       }
       h2 {
         font-size: 100%;
@@ -63,7 +72,10 @@
     <div style="display: flex; position: relative;">
       <video controls width="320" height="320"></video>
       <canvas width="320" height="320"></canvas>
-      <progress min="0" max="1"></progress>
+      <div class="status">
+        <div class="status-text"></div>
+        <progress min="0" max="1"></progress>
+      </div>
     </div>
     <textarea readonly rows="4"></textarea>
     <form>
@@ -102,11 +114,11 @@
           </tr>
           <tr>
             <td>Languages</td>
-            <td><input name="langs"></td>
+            <td><input name="languages"></td>
           </tr>
           <tr>
-            <td>Whitelist</td>
-            <td><input name="whitelist"></td>
+            <td>Characters</td>
+            <td><input name="characters"></td>
           </tr>
           <tr>
             <td></td>
@@ -117,6 +129,6 @@
     </form>
     <script></script>
     <script src="https://cdn.jsdelivr.net/npm/tesseract.js@2.0.2/dist/tesseract.min.js"></script>
-    <script src="app.js"></script>
+    <script src="app.ts"></script>
   </body>
 </html>
