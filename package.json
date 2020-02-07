@@ -10,7 +10,9 @@
   "devDependencies": {
     "parcel": "^1.12.4",
     "parcel-plugin-clean-dist": "0.0.6",
-    "tesseract.js": "^2.0.2",
-    "typescript": "^3.8.0-dev.20200128"
+    "typescript": "^3.7.5"
+  },
+  "dependencies": {
+    "tesseract.js": "^2.0.2"
   }
 }

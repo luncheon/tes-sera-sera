@@ -1,5 +1,4 @@
-import type _Tesseract from 'tesseract.js'
-declare const Tesseract: typeof _Tesseract
+import Tesseract from 'tesseract.js'
 
 const sleep = (milliseconds: number) => new Promise(resolve => setTimeout(resolve, milliseconds))
 
