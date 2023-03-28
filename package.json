@@ -4,15 +4,13 @@
   "description": "A tesseract.js camera example.",
   "private": true,
   "scripts": {
-    "start": "parcel       src/index.html --out-dir docs --no-cache --https",
-    "build": "parcel build src/index.html --out-dir docs --no-cache --public-url . --no-source-maps"
+    "start": "esbuild --bundle --outfile=app.js app.ts --serve=0.0.0.0:8000 --servedir=.",
+    "build": "esbuild --bundle --outfile=app.js app.ts"
   },
   "devDependencies": {
-    "parcel": "^1.12.4",
-    "parcel-plugin-clean-dist": "0.0.6",
-    "typescript": "^3.7.5"
+    "esbuild": "^0.17.14"
   },
   "dependencies": {
-    "tesseract.js": "^2.0.2"
+    "tesseract.js": "^4.0.2"
   }
 }

@@ -1,14 +1,12 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "outDir": "docs",
-    "target": "es2018",
-    "module": "esnext",
+    "target": "es2022",
+    "module": "es2022",
     "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true
   },
-  "files": ["src/app.ts"]
+  "files": ["app.ts"]
 }
